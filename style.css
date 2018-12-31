@@ -1,0 +1,100 @@
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: "Helvetica Neue", Helvetica, Arial;
+}
+
+@font-face {
+    font-family: 'Ailerons';
+    src: url('Ailerons-Regular.woff2') format('woff2'),
+        url('Ailerons-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#replay-table{
+	position: absolute;
+	margin: 20px;
+	left: 100px;
+	width: 75%;
+	display: inline-block;
+	transition: left 0.3s linear;
+}
+
+#sidebar{
+	background: #151718;
+	width: 200px;
+	height: 100%;
+	display: block;
+	position: fixed;
+	left: -200px;
+	top: 0px;
+	transition: left 0.3s linear;
+}
+
+#sidebar.visible{
+	left: 0px;
+	transition: left 0.3s linear;
+}
+
+#menu-header{
+	color: #FFFFFF;
+	padding: 20px;
+	text-align: center;
+	font-family: 'Ailerons';
+}
+
+#replay-table.moved{
+	left: 200px;
+}
+
+#sidebar-btn{
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	height: 15px;
+	cursor: pointer;
+	margin: 20px;
+	position: absolute;
+	top: 0px;
+	right: -60px;
+}
+
+#sidebar-btn span{
+	height: 1px;
+	background: #111;
+	margin-bottom: 5px;
+	display: block;
+}
+
+#sidebar-btn span:nth-child(2){
+	width: 75%;
+}
+
+#sidebar-btn span:nth-child(3){
+	width: 50%;
+}
+
+ul.menu-list{
+	margin: 0px;
+	padding: 0px;
+}
+
+ul.menu-list li{
+	list-style: none;
+}
+
+ul.menu-list li a{
+	/*background: #1C1E1F;*/
+	color: #ccc;
+	border-bottom: 0px solid #111;
+	display: block;
+	width: 200px;
+	padding: 10px;
+	text-decoration: none;
+	text-align: center;
+}
+
+#populate{
+	background: #151718;
+}
