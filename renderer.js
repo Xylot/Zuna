@@ -6,7 +6,7 @@ const dtbs = require('datatables.net-bs4')(window, $);
 
 
 function getReplayJson(callback) {
-    $.getJSON("data2.json", function(json) {
+    $.getJSON("Resources/Databases/data2.json", function(json) {
         callback(json)
     });
 }
@@ -53,12 +53,15 @@ getReplayJson(function(json) {
             goalsOrange, goalsBlue, user,
             players, replayName
         ];
+        date = date.split(" ");
+        dateString = new Date(date[0]);
+        dateString = dateString.toDateString().split(' ').slice(1).join(' ');
         replayData.push(headerProps);        
         if (replayName !== null) {
-            dataSet2.push([replayName, date, teamSize, matchType, map, goalsOrange + ':' + goalsBlue])
+            dataSet2.push([replayName, dateString, teamSize, matchType, map, goalsOrange + ':' + goalsBlue])
         }
         else {
-            dataSet2.push([id, date, teamSize, matchType, map, goalsOrange + ':' + goalsBlue])
+            dataSet2.push([id, dateString, teamSize, matchType, map, goalsOrange + ':' + goalsBlue])
         }
     } 
 });
@@ -66,14 +69,10 @@ getReplayJson(function(json) {
 // Click event
 $("#populate").click(() => {
 
-    // dataSet2 = [
-    //     [id, date, teamSize, matchType, map, goalsOrange + ':' + goalsBlue]
-    // ];
-
     // Create DataTable
     $('#output').DataTable({
-        //data: data,
-        //columns: columns
+        searching: false,
+        lengthChange: false,
         data: dataSet2,
         columns: [
             { title: "Replay Name" },
@@ -89,4 +88,9 @@ $("#populate").click(() => {
 $("#sidebar-btn").click(function(){
     $('#sidebar').toggleClass('visible');
     $('#replay-table').toggleClass('moved');
+    $('#select-match-type').toggleClass('moved');
+    $('#select-date').toggleClass('moved');
+    $('#select-team-size').toggleClass('moved');
+    $('#select-map').toggleClass('moved');
+    $('#filter').toggleClass('moved');
 });
